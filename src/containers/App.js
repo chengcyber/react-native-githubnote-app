@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 21:52:46 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-21 23:01:08
+ * @Last Modified time: 2017-02-22 00:06:49
  */
 
 import React from 'react';
@@ -14,7 +14,8 @@ import {
   Text
 } from 'react-native';
 import { connect } from 'react-redux';
-import Main from '../components/Main'
+// import Main from '../components/Main'
+import MainContainer from './MainContainer';
 
 class App extends React.Component {
 
@@ -27,7 +28,7 @@ class App extends React.Component {
         <Navigator 
           initialRoute={{
             'title': 'Github Notetaker',
-            'component': Main
+            'component': MainContainer
           }}
           renderScene={(route, navigator) => {
             let Component = route.component;

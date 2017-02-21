@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 22:16:42 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-21 23:52:48
+ * @Last Modified time: 2017-02-22 00:08:13
  */
 
 import React from 'react';
@@ -14,54 +14,29 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-class Main extends React.Component {
+function Main({ title, searchText, buttonText, handleTextChange, handleSubmitSearch }) {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      username: 'kimochg',
-      isLoading: false,
-      error: false
-    }
-  }
-
-  handleTextChange(username) {
-    this.setState({
-      username
-    })
-  }
-
-  handleSubmitSearch(event) {
-    console.log('SUBMIT', this.state.username);
-    // update spinner
-    // fetch github infos
-    // reroute to next passing that github infos
-  }
-
-  render() {
-    return (
-      <View
-        style={styles.mainContainer}
+  return (
+    <View
+      style={styles.mainContainer}
+    >
+      <Text
+        style={styles.title}
+      >{title}</Text>
+      <TextInput
+        style={styles.searchInput}
+        onChangeText={handleTextChange}
+        value={searchText}
+      />
+      <TouchableHighlight
+        style={styles.button}
+        onPress={handleSubmitSearch}
+        underlayColor="white"
       >
-        <Text
-          style={styles.title}
-        >Search for a Github User</Text>
-        <TextInput
-          style={styles.searchInput}
-          onChangeText={this.handleTextChange.bind(this)}
-          value={this.state.username}
-        />
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.handleSubmitSearch.bind(this)}
-          underlayColor="white"
-        >
-          <Text style={styles.buttonText}>Search</Text>
-        </TouchableHighlight>
-      </View>
-    )
-  }
+        <Text style={styles.buttonText}>{buttonText}</Text>
+      </TouchableHighlight>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({

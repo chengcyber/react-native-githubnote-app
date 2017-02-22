@@ -2,12 +2,12 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-22 00:10:31 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-22 20:15:11
+ * @Last Modified time: 2017-02-22 22:18:57
  */
 
 import React from 'react';
 import Main from '../components/Main';
-import Dashboard from '../components/Dashboard';
+import DashboardContainer from '../containers/DashboardContainer';
 import api from '../lib/api';
 
 class MainContainer extends React.Component {
@@ -48,7 +48,7 @@ class MainContainer extends React.Component {
           } else {
             this.props.navigator.push({
               title: res.name || 'Select an Option',
-              component: Dashboard,
+              component: DashboardContainer,
               passProps: {userInfo: res}
             });
             this.setState({

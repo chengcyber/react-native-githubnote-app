@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 21:52:46 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-22 00:06:49
+ * @Last Modified time: 2017-02-22 19:23:13
  */
 
 import React from 'react';
@@ -11,6 +11,7 @@ import {
   Navigator,
   StatusBar,
   View,
+  TouchableHighlight,
   Text
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -23,7 +24,7 @@ class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar 
-          barStyle="light-content"
+          barStyle="default"
         />
         <Navigator 
           initialRoute={{
@@ -40,6 +41,28 @@ class App extends React.Component {
               />
             );
           }}
+          navigationBar={
+            <Navigator.NavigationBar
+              style={styles.navbar}
+              routeMapper={{
+                LeftButton: (route, navigator, index, navState) =>
+                  { return index? (
+                    <TouchableHighlight
+                      onPress={() => navigator.pop()}
+                      underlayColor="white"
+                    >
+                      <Text style={styles.leftButton}>Back</Text>
+                    </TouchableHighlight>
+                  ) : null; },
+                RightButton: (route, navigator, index, navState) => (null),
+                Title: (route, navigator, index, navState) =>
+                  { 
+                    console.log(index, navState)
+                    return (<Text style={styles.title}>{route.title}</Text>); 
+                  },
+              }}
+            />
+          }
         />
       </View>
     )
@@ -50,8 +73,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ff50c3',
-
   },
+  navbar: {
+    backgroundColor: '#ddd',
+  },
+  title: {
+    padding: 5,
+    fontSize: 24,
+  },
+  leftButton: {
+    padding: 10,
+    fontSize: 16,
+  }
 })
 
 export default App;

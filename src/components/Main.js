@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 22:16:42 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-22 00:08:13
+ * @Last Modified time: 2017-02-22 19:00:44
  */
 
 import React from 'react';
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 30,
-    marginTop: 20,
+    marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
     backgroundColor: '#48BBEC'

@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 22:16:42 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-22 19:00:44
+ * @Last Modified time: 2017-02-22 20:18:17
  */
 
 import React from 'react';
@@ -11,10 +11,11 @@ import {
   View,
   Text,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
+  ActivityIndicator
 } from 'react-native';
 
-function Main({ title, searchText, buttonText, handleTextChange, handleSubmitSearch }) {
+function Main({ title, searchText, buttonText, handleTextChange, handleSubmitSearch, isLoading, error }) {
 
   return (
     <View
@@ -35,6 +36,12 @@ function Main({ title, searchText, buttonText, handleTextChange, handleSubmitSea
       >
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableHighlight>
+      <ActivityIndicator
+        animating={isLoading}
+        color="#111"
+        size="large"
+      />
+      {error ? <Text>{error}</Text> : null}
     </View>
   )
 }

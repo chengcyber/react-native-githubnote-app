@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-22 00:10:31 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-22 19:52:43
+ * @Last Modified time: 2017-02-22 20:15:11
  */
 
 import React from 'react';
@@ -64,13 +64,15 @@ class MainContainer extends React.Component {
   
 
   render() {
+    const { username, ...rest } = this.state;
     return (
       <Main
         title="Search for a Github User"
-        searchText={this.state.username}
+        searchText={username}
         buttonText="Search"
         handleTextChange={this.handleTextChange.bind(this)}
         handleSubmitSearch={this.handleSubmitSearch.bind(this)}
+        {...rest}
       />
     );
   }

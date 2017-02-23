@@ -2,12 +2,13 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 10:38:29 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 10:50:44
+ * @Last Modified time: 2017-02-23 16:54:33
  */
 import React from 'react';
 import {
   View,
   Text,
+  Image,
   StyleSheet
 } from 'react-native';
 
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#48BBEC',
     paddingBottom: 10,
+    marginTop: 65,
   },
   image: {
     height: 125,

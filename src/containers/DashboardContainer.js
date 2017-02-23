@@ -2,12 +2,12 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-22 21:47:11 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-22 22:39:41
+ * @Last Modified time: 2017-02-23 16:53:39
  */
 
 import React from 'react';
 import Dashboard from '../components/Dashboard';
-
+import Profile from '../components/Profile';
 
 class DashboardContainer extends React.Component{
 
@@ -17,6 +17,13 @@ class DashboardContainer extends React.Component{
 
   goToProfile() {
     console.log('goToProfile');
+    this.props.navigator.push({
+      title: 'Profile View',
+      component: Profile,
+      passProps: {
+        userInfo: this.props.userInfo
+      },
+    })
   }
 
   goToRepos() {

@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 21:52:46 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 13:02:42
+ * @Last Modified time: 2017-02-23 17:55:12
  */
 
 import React from 'react';
@@ -72,7 +72,7 @@ class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff50c3',
+    backgroundColor: 'white',
   },
   navbar: {
     backgroundColor: '#ddd',

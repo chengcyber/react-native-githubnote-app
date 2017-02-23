@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 22:16:42 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-22 20:18:17
+ * @Last Modified time: 2017-02-23 14:33:50
  */
 
 import React from 'react';
@@ -27,7 +27,7 @@ function Main({ title, searchText, buttonText, handleTextChange, handleSubmitSea
       <TextInput
         style={styles.searchInput}
         onChangeText={handleTextChange}
-        value={searchText}
+        defaultValue={searchText}
       />
       <TouchableHighlight
         style={styles.button}

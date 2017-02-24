@@ -2,11 +2,12 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 15:32:14 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 13:25:45
+ * @Last Modified time: 2017-02-24 13:38:19
  */
 
 import React from 'react';
 import Badge from '../containers/BadgeContainer';
+import Separator from './Helpers/Separator';
 import {
   Text,
   View,
@@ -29,9 +30,12 @@ export default function Profile(props) {
     return topicArr.map((item, index) => {
       if (userInfo[item]) {
         return (
-          <View style={styles.rowContainer} key={index}>
-            <Text style={styles.rowTitle}>{getRowTitle(userInfo, item)}</Text>
-            <Text style={styles.rowContent}>{userInfo[item]}</Text>
+          <View key={index}>
+            <View style={styles.rowContainer}>
+              <Text style={styles.rowTitle}>{getRowTitle(userInfo, item)}</Text>
+              <Text style={styles.rowContent}>{userInfo[item]}</Text>
+            </View>
+            <Separator />
           </View>
         )
       }

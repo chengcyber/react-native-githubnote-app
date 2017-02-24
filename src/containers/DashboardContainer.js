@@ -2,12 +2,15 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-22 21:47:11 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 16:53:39
+ * @Last Modified time: 2017-02-24 14:02:39
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import Dashboard from '../components/Dashboard';
 import Profile from '../components/Profile';
+import * as actions from '../modules/actions';
+import { getUsername } from '../modules/reducers';
 
 class DashboardContainer extends React.Component{
 
@@ -28,6 +31,8 @@ class DashboardContainer extends React.Component{
 
   goToRepos() {
     console.log('goToRepos');
+    const { fetchUserRepos, username, navigator } = this.props;
+    fetchUserRepos(username, navigator);
   }
 
   goToNotes() {
@@ -62,5 +67,16 @@ class DashboardContainer extends React.Component{
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    username: getUsername(state)
+  }
+}
+
+DashboardContainer = connect(
+  mapStateToProps,
+  actions
+)(DashboardContainer);
 
 export default DashboardContainer;

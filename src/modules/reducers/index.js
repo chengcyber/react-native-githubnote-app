@@ -1,65 +1,27 @@
 /*
  * @Author: LIU CHENG 
- * @Date: 2017-02-21 22:22:39 
+ * @Date: 2017-02-24 14:06:33 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 15:00:36
+ * @Last Modified time: 2017-02-24 14:17:54
  */
 
-import React from 'react';
-import { TYPE } from '../../constants';
+import { combineReducers } from 'redux';
+import profile, * as fromProfile from './profile';
 
-/**
- * Initial State
- */
-
-const initialState = {
-  isLoading: false,
-  username: 'kimochg',
-  error: '',
-}
-
-/**
- * ACTION_HANDERS
- */
-
-const actionHandler = {
-  [TYPE.FETCH_USER_REQUEST]: (state, action) => {
-    return {
-      ...state,
-      isLoading: true,
-      error: '',
-    }
-  },
-  [TYPE.FETCH_USER_SUCCESS]: (state, action) => {
-    return {
-      ...state,
-      username: '',
-      isLoading: false,
-      userInfo: action.userInfo,
-    }
-  },
-  [TYPE.FETCH_USER_FAILURE]: (state, action) => {
-    return {
-      ...state,
-      isLoading: false,
-      error: (typeof action.error === 'Object')?JSON.stringify(action.error) : action.error || 'User not found',
-    }
-  },
-  [TYPE.TYPING_USERNAME]: (state, action) => {
-    return {
-      ...state,
-      username: action.username,
-    }
-  }
-}
-
-/**
- * Reducer
- */
-
-const rootReducer = (state = initialState, action) => {
-  const handler = actionHandler[action.type];
-  return handler ? handler(state, action) : state;
-}
+const rootReducer = combineReducers({
+  profile
+});
 
 export default rootReducer;
+
+export const getUsername = (state) =>
+  fromProfile.getUsername(state.profile)
+
+export const getUserInfo = (state) =>
+  fromProfile.getUserInfo(state.profile)
+
+export const getFetchingProfile = (state) =>
+  fromProfile.getFetchingProfile(state.profile)
+
+export const getFetchProfileErrorMsg = (state) =>
+  fromProfile.getFetchProfileErrorMsg(state.profile)

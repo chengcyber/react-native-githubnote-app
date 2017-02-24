@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-22 00:10:31 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 14:51:20
+ * @Last Modified time: 2017-02-24 14:18:50
  */
 
 import React from 'react';
@@ -10,6 +10,7 @@ import Main from '../components/Main';
 import DashboardContainer from '../containers/DashboardContainer';
 import { connect } from 'react-redux';
 import * as actions from '../modules/actions';
+import { getUsername, getFetchingProfile, getFetchProfileErrorMsg } from '../modules/reducers';
 
 class MainContainer extends React.Component {
 
@@ -32,6 +33,7 @@ class MainContainer extends React.Component {
   
 
   render() {
+    // username, isLoading, error
     const { username, ...rest } = this.props;
     return (
       <Main
@@ -48,7 +50,9 @@ class MainContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    ...state
+    username: getUsername(state),
+    isLoading: getFetchingProfile(state),
+    error: getFetchProfileErrorMsg(state)
   }
 }
 

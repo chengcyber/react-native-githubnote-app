@@ -2,13 +2,15 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 13:17:24 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 13:52:17
+ * @Last Modified time: 2017-02-24 15:27:39
  */
 
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { TYPE } from '../../constants';
 import api from '../../lib/api';
 import DashboardContainer from '../../containers/DashboardContainer';
+import Repositories from '../../components/Repositories';
+
 
 /**
  * Woker Saga
@@ -38,7 +40,7 @@ function* fetchUserSaga(action) {
         passProps: {
           userInfo
         }
-      })
+      });
     }
   } catch(error) {
     // error handling
@@ -64,7 +66,14 @@ function* fetchUserReposSaga(action) {
       type: TYPE.FETCH_USER_REPOS_SUCCESS,
       repos,
     })
-    // TODO reroute to next scene
+    // reroute to next scene
+    navigator.push({
+      title: 'Repos',
+      component: Repositories,
+      passProps: {
+        repos
+      }
+    })
   } catch(error) {
     // error handling
     yield put({

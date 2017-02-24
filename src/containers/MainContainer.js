@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-22 00:10:31 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 14:18:50
+ * @Last Modified time: 2017-02-24 15:09:47
  */
 
 import React from 'react';
@@ -16,25 +16,32 @@ class MainContainer extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      username: 'kimochg'
+    }
   }
 
   handleTextChange(username) {
-    this.props.typingUsername(username);
+    this.setState({
+      username
+    })
   }
 
   handleSubmitSearch(event) {
-    console.log('SUBMIT', this.props.username);
+    console.log('SUBMIT', this.state.username);
 
     // fetch github infos
-    const { fetchUser, username, navigator } = this.props;
-    fetchUser(username, navigator)
+    const { fetchUser, navigator } = this.props;
+    const { username } = this.state;
+
+    fetchUser(username, navigator);
     // reroute to next passing that github infos
   }
   
 
   render() {
     // username, isLoading, error
-    const { username, ...rest } = this.props;
+    const { username } = this.state;
     return (
       <Main
         title="Search for a Github User"
@@ -42,7 +49,7 @@ class MainContainer extends React.Component {
         buttonText="Search"
         handleTextChange={this.handleTextChange.bind(this)}
         handleSubmitSearch={this.handleSubmitSearch.bind(this)}
-        {...rest}
+        {...this.props}
       />
     );
   }

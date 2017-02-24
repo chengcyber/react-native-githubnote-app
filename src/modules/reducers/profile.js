@@ -2,10 +2,9 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 22:22:39 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 14:17:15
+ * @Last Modified time: 2017-02-24 15:12:46
  */
 
-import React from 'react';
 import { TYPE } from '../../constants';
 
 /**
@@ -14,7 +13,6 @@ import { TYPE } from '../../constants';
 
 const initialState = {
   isLoading: false,
-  username: 'kimochg',
   error: '',
 }
 
@@ -28,12 +26,12 @@ const actionHandler = {
       ...state,
       isLoading: true,
       error: '',
+      username: action.username
     }
   },
   [TYPE.FETCH_USER_SUCCESS]: (state, action) => {
     return {
       ...state,
-      username: '',
       isLoading: false,
       userInfo: action.userInfo,
     }

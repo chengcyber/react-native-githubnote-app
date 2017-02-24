@@ -2,11 +2,11 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 15:32:14 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 13:38:19
+ * @Last Modified time: 2017-02-24 15:31:13
  */
 
 import React from 'react';
-import Badge from '../containers/BadgeContainer';
+import BadgeContainer from '../containers/BadgeContainer';
 import Separator from './Helpers/Separator';
 import {
   Text,
@@ -44,7 +44,7 @@ export default function Profile(props) {
 
   return (
     <ScrollView style={styles.container}>
-      <Badge userInfo={props.userInfo}></Badge>
+      <BadgeContainer></BadgeContainer>
       {renderContents()}
     </ScrollView>
   )

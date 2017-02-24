@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 15:32:14 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 16:54:47
+ * @Last Modified time: 2017-02-24 13:25:45
  */
 
 import React from 'react';
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
     color: '#48BBEC',
   },
   rowContent: {
-    color: 19,
+    fontSize: 19,
   }
 });

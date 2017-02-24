@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 13:14:00 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 15:09:58
+ * @Last Modified time: 2017-02-24 23:16:22
  */
 
 import { TYPE } from '../../constants';
@@ -27,5 +27,12 @@ export function fetchUserRepos(username, navigator) {
     type: TYPE.FETCH_USER_REPOS_REQUEST,
     username,
     navigator,
+  }
+}
+
+export function fetchNotes(username) {
+  return {
+    type: TYPE.FETCH_NOTES_REQUEST,
+    username
   }
 }

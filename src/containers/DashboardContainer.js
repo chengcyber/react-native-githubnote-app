@@ -2,13 +2,14 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-22 21:47:11 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 15:19:30
+ * @Last Modified time: 2017-02-24 23:12:56
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import Dashboard from '../components/Dashboard';
 import Profile from '../components/Profile';
+import NoteContainer from '../containers/NoteContainer';
 import * as actions from '../modules/actions';
 import { getUsername } from '../modules/reducers';
 
@@ -37,6 +38,14 @@ class DashboardContainer extends React.Component{
 
   goToNotes() {
     console.log('goToNotes');
+    const { navigator } = this.props;
+    navigator.push({
+      title: 'Note View',
+      component: NoteContainer,
+      passProps: {
+        
+      }
+    })
   }
 
   render() {

@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 13:17:24 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 15:27:39
+ * @Last Modified time: 2017-02-24 16:05:49
  */
 
 import { takeEvery, put, call } from 'redux-saga/effects';
@@ -23,7 +23,7 @@ function* fetchUserSaga(action) {
   try {
     const userInfo = yield call(api.fetchUser, username);
     console.log(userInfo);
-    if (userInfo.message === 'Not Found') {
+    if (!userInfo || userInfo.message === 'Not Found') {
       // user not found
       yield put({
         type: TYPE.FETCH_USER_FAILURE,

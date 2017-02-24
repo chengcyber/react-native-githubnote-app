@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-24 15:25:40 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 16:15:14
+ * @Last Modified time: 2017-02-24 18:40:02
  */
 
 import React from 'react';
@@ -15,10 +15,23 @@ import {
 } from 'react-native';
 import BadgeContainer from '../containers/BadgeContainer';
 import Separator from './Helpers/Separator';
+import PageView from './PageView';
 
 export default function Repositories (props) {
 
   console.log('Repositories', props);
+
+  const goToPageView = (url) => {
+    console.log(url);
+    const { navigator } = props;
+    navigator.push({
+      title: 'Web View',
+      component: PageView,
+      passProps: {
+        url
+      }
+    });
+  }
 
   const renderContent = () => {
     const { repos } = props;
@@ -32,11 +45,12 @@ export default function Repositories (props) {
         <View key={index}>
           <View style={styles.rowContainer}>
             <TouchableHighlight
+              onPress={() => goToPageView(item.html_url)}
               underlayColor="transparent"
             >
               <Text style={styles.name}>{item.name}</Text>
             </TouchableHighlight>
-            <Text style={styles.stars}>{item.stargazers_count}</Text>
+            <Text style={styles.stars}>Stars: {item.stargazers_count}</Text>
             {desc}
           </View>
           <Separator />

@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 13:17:24 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-25 11:30:14
+ * @Last Modified time: 2017-02-25 11:58:04
  */
 
 import { take, fork, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
@@ -117,13 +117,20 @@ function* addNoteSaga(action) {
 
   try {
     const note = yield call(api.addNote, username, text);
-    yield put({
-      type: TYPE.ADD_NOTE_SUCCESS,
-      note: {
-        key: note.name,
-        value: text,
-      },
-    });
+    if (note.error) {
+      yield put({
+        type: TYPE.ADD_NOTE_FAILURE,
+        error: note.error,
+      });
+    } else {
+      yield put({
+        type: TYPE.ADD_NOTE_SUCCESS,
+        note: {
+          key: note.name,
+          value: text,
+        },
+      });
+    }
   } catch(error) {
     yield put({
       type: TYPE.ADD_NOTE_FAILURE,

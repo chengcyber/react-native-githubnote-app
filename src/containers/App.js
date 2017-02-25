@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 21:52:46 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 17:55:12
+ * @Last Modified time: 2017-02-25 14:19:33
  */
 
 import React from 'react';
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   navbar: {
-    backgroundColor: '#ddd',
+    backgroundColor: 'white',
   },
   title: {
     padding: 5,

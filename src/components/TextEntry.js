@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-24 21:43:46 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 23:44:09
+ * @Last Modified time: 2017-02-25 11:32:58
  */
 
 import React from 'react';
@@ -39,7 +39,6 @@ class TextEntry extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log('Text Entry', props);
     this.state = {
       text: '',
     }

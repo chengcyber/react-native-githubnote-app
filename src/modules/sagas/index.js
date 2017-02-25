@@ -2,10 +2,10 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 13:17:24 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 16:05:49
+ * @Last Modified time: 2017-02-25 11:30:14
  */
 
-import { takeEvery, put, call } from 'redux-saga/effects';
+import { take, fork, takeEvery, takeLatest, put, call } from 'redux-saga/effects';
 import { TYPE } from '../../constants';
 import api from '../../lib/api';
 import DashboardContainer from '../../containers/DashboardContainer';
@@ -13,7 +13,7 @@ import Repositories from '../../components/Repositories';
 
 
 /**
- * Woker Saga
+ * Worker Saga
  * fetch user and reroute to dashboard scene
  */
 function* fetchUserSaga(action) {
@@ -52,7 +52,7 @@ function* fetchUserSaga(action) {
 }
 
 /**
- * Woker Saga
+ * Worker Saga
  * fetch user repos and reroute to repos scene
  */
 function* fetchUserReposSaga(action) {
@@ -85,10 +85,77 @@ function* fetchUserReposSaga(action) {
 }
 
 /**
+ * Worker Saga
+ * fetch notes
+ */
+function* fetchNotesSaga(action) {
+  console.log('fetchNotesSaga', action);
+  const { username } = action;
+
+  try {
+    const notes = yield call(api.getNotes, username);
+    yield put({
+      type: TYPE.FETCH_NOTES_SUCCESS,
+      notes
+    })
+
+  } catch(error) {
+    yield put({
+      type: TYPE.FETCH_NOTES_FAILURE,
+      error
+    });
+  }
+}
+
+/**
+ * Worker Saga
+ * Add note to back-end store
+ */
+function* addNoteSaga(action) {
+  console.log('addNoteSaga', action);
+  const { username, text } = action;
+
+  try {
+    const note = yield call(api.addNote, username, text);
+    yield put({
+      type: TYPE.ADD_NOTE_SUCCESS,
+      note: {
+        key: note.name,
+        value: text,
+      },
+    });
+  } catch(error) {
+    yield put({
+      type: TYPE.ADD_NOTE_FAILURE,
+      error,
+    })
+  }
+
+}
+
+/**
+ * Watcher Saga,
+ * take one and block the other until the first complete
+ */
+const takeOneAndBlock = (pattern, worker, ...args) => {
+  const task = fork(function*() {
+    while(true) {
+      const action = yield take(pattern);
+      yield call(worker, ...args, action);
+    }
+  });
+  return task;
+}
+
+/**
  * Watch FETCH_USER_REQUEST
  * Watch FETCH_USER_REPOS_REQUEST
+ * Watch FETCH_NOTES_REQUEST
+ * Watch ADD_NOTE_REQUEST
  */
 export default function* rootSaga() {
-  yield takeEvery(TYPE.FETCH_USER_REQUEST, fetchUserSaga);
-  yield takeEvery(TYPE.FETCH_USER_REPOS_REQUEST, fetchUserReposSaga);
+  yield takeOneAndBlock(TYPE.FETCH_USER_REQUEST, fetchUserSaga);
+  yield takeOneAndBlock(TYPE.FETCH_USER_REPOS_REQUEST, fetchUserReposSaga);
+  yield takeOneAndBlock(TYPE.FETCH_NOTES_REQUEST, fetchNotesSaga);
+  yield takeLatest(TYPE.ADD_NOTE_REQUEST, addNoteSaga);
 }

@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-24 14:19:38 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 14:33:25
+ * @Last Modified time: 2017-02-25 09:25:27
  */
 
 import { TYPE } from '../../constants';
@@ -49,3 +49,9 @@ const reposReducer = (state = initialState, action) => {
 }
 
 export default reposReducer;
+
+export const getRepos = (state) => state.repos
+
+export const getIsFetching = (state) => state.isFetching
+
+export const getFetchErrMsg = (state) => state.error

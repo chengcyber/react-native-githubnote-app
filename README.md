@@ -38,3 +38,8 @@ react-native run-ios
 
 PS. Andriod Environment not tested
 
+
+# Screensnaps
+
+![](screenshots/ss 2017-02-25 2.31.12.png)![](screenshots/ss 2017-02-25 2.31.21.png)![](screenshots/ss 2017-02-25 2.31.23.png)![](screenshots/ss 2017-02-25 2.31.32.png)![](screenshots/ss 2017-02-25 2.31.38.png)
+

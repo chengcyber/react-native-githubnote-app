@@ -32,7 +32,9 @@ to
 # Usage
 
 ```Bash
-yarn install
+git clone https://github.com/kimochg/react-native-githubnote-app
+cd react-native-githubnote-app
+npm install (or yarn install as you like)
 react-native run-ios
 ```
 

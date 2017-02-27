@@ -1,5 +1,7 @@
 # Github Note Taker
 
+branch:rest levarage github RESTful API.
+
 # Dependency
 - redux
 - react-redux

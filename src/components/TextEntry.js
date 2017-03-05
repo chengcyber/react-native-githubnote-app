@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-24 21:43:46 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-25 11:32:58
+ * @Last Modified time: 2017-03-05 12:21:08
  */
 
 import React from 'react';
@@ -25,16 +25,6 @@ import {
  * />
  */
 class TextEntry extends React.Component {
-
-  static propTypes = {
-    handleSubmit: React.PropTypes.func.isRequired
-  }
-
-  static defaultProps = {
-    buttonText: 'Submit',
-    placeholder: '',
-    defaultValue: '',
-  }
 
   constructor(props) {
     super(props);
@@ -75,7 +65,16 @@ class TextEntry extends React.Component {
 }
 
 TextEntry.propTypes = {
-  handleSubmit: React.PropTypes.func.isRequired
+  buttonText: React.PropTypes.string,
+  placeholder: React.PropTypes.string,
+  defaultValue: React.PropTypes.string,
+  handleSubmit: React.PropTypes.func.isRequired,
+}
+
+TextEntry.defaultProps = {
+  buttonText: 'Submit',
+  placeholder: '',
+  defaultValue: '',
 }
 
 export default TextEntry;

@@ -1,11 +1,23 @@
 /*
  * @Author: LIU CHENG 
+ * @Date: 2017-03-05 11:51:42 
+ * @Last Modified by: LIU CHENG
+ * @Last Modified time: 2017-03-05 11:56:17
+ */
+/*
+ * @Author: LIU CHENG 
+ * @Date: 2017-03-05 11:51:36 
+ * @Last Modified by:   LIU CHENG 
+ * @Last Modified time: 2017-03-05 11:51:36 
+ */
+/*
+ * @Author: LIU CHENG 
  * @Date: 2017-02-23 15:32:14 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 15:31:13
+ * @Last Modified time: 2017-03-05 11:50:37
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import BadgeContainer from '../containers/BadgeContainer';
 import Separator from './Helpers/Separator';
 import {
@@ -15,7 +27,12 @@ import {
   StyleSheet
 } from 'react-native';
 
-export default function Profile(props) {
+/**
+ * props:
+ * userInfo: user infos from backend
+ * 
+ */
+function Profile(props) {
 
   const userInfo = props.userInfo;
   const topicArr = ['company', 'location', 'followers', 'following', 'email', 'bio', 'public_repos'];
@@ -50,6 +67,18 @@ export default function Profile(props) {
   )
 }
 
+Profile.propTypes = {
+  userInfo: PropTypes.shape({
+    company: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    bio: PropTypes.string,
+    public_repos: PropTypes.number.isRequired,
+  }).isRequired,
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -70,3 +99,5 @@ const styles = StyleSheet.create({
     fontSize: 19,
   }
 });
+
+export default Profile;

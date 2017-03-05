@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-21 22:16:42 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-23 14:33:50
+ * @Last Modified time: 2017-03-05 11:46:44
  */
 
 import React from 'react';
@@ -15,6 +15,16 @@ import {
   ActivityIndicator
 } from 'react-native';
 
+/**
+ * props:
+ * title: text title,
+ * searchText: input defaultValue
+ * buttonText: button text
+ * handleTextChange: handler when input text changes
+ * handleSubmitSearch: handle when button click
+ * isLoading: spinner show or not
+ * error: error message to display
+ */
 function Main({ title, searchText, buttonText, handleTextChange, handleSubmitSearch, isLoading, error }) {
 
   return (
@@ -44,6 +54,16 @@ function Main({ title, searchText, buttonText, handleTextChange, handleSubmitSea
       {error ? <Text>{error}</Text> : null}
     </View>
   )
+}
+
+Main.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  searchText: React.PropTypes.string.isRequired,
+  buttonText: React.PropTypes.string.isRequired,
+  handleTextChange: React.PropTypes.func.isRequired,
+  handleSubmitSearch: React.PropTypes.func.isRequired,
+  isLoading: React.PropTypes.bool.isRequired,
+  error: React.PropTypes.string.isRequired,
 }
 
 const styles = StyleSheet.create({

@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-24 18:31:35 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 18:45:42
+ * @Last Modified time: 2017-03-05 11:47:48
  */
 
 import React from 'react';
@@ -12,12 +12,16 @@ import {
   StyleSheet
 } from 'react-native';
 
-export default function PageView (props) {
+function PageView (props) {
   return (
     <View style={styles.container}>
       <WebView source={{ uri: props.url}} />
     </View>
   )
+}
+
+PageView.propTypes = {
+  url: React.PropTypes.string.isRequired,
 }
 
 const styles = StyleSheet.create({
@@ -26,4 +30,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6EF',
     marginTop: 65,
   },
-})
+});
+
+export default PageView;

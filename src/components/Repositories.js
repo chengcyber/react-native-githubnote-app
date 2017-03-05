@@ -2,10 +2,10 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-24 15:25:40 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 18:40:02
+ * @Last Modified time: 2017-03-05 12:14:58
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
   ScrollView,
   View,
@@ -17,7 +17,7 @@ import BadgeContainer from '../containers/BadgeContainer';
 import Separator from './Helpers/Separator';
 import PageView from './PageView';
 
-export default function Repositories (props) {
+function Repositories (props) {
 
   console.log('Repositories', props);
 
@@ -67,6 +67,15 @@ export default function Repositories (props) {
   )
 }
 
+Repositories.propTypes = {
+  repos: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    html_url: PropTypes.string.isRequired,
+    stargazers_count: PropTypes.number.isRequired,
+  })).isRequired,
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -89,4 +98,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     paddingBottom: 5,
   }
-})
+});
+
+export default Repositories;

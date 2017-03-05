@@ -2,7 +2,7 @@
  * @Author: LIU CHENG 
  * @Date: 2017-02-23 10:38:29 
  * @Last Modified by: LIU CHENG
- * @Last Modified time: 2017-02-24 23:33:16
+ * @Last Modified time: 2017-03-05 11:41:30
  */
 import React from 'react';
 import {
@@ -12,7 +12,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-export default function Badge(props) {
+function Badge(props) {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{uri: props.avatar_url}}/>
@@ -20,6 +20,12 @@ export default function Badge(props) {
       <Text style={styles.handle}>{props.login}</Text>
     </View>
   )
+}
+
+Badge.propTypes = {
+  avatar_url: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
+  login: React.PropTypes.string.isRequired,
 }
 
 const styles = StyleSheet.create({
@@ -47,4 +53,6 @@ const styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center'
   }
-})
+});
+
+export default Badge;

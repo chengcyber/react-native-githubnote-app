@@ -43,9 +43,9 @@ PS. Andriod Environment not tested
 
 # Screenshots
 
-- ![](screenshots/ss 2017-02-25 2.31.12.png)
-- ![](screenshots/ss 2017-02-25 2.31.21.png)
-- ![](screenshots/ss 2017-02-25 2.31.23.png)
-- ![](screenshots/ss 2017-02-25 2.31.32.png)
-- ![](screenshots/ss 2017-02-25 2.31.38.png)
+![](screenshots/ss1.png)
+![](screenshots/ss2.png)
+![](screenshots/ss3.png)
+![](screenshots/ss4.png)
+![](screenshots/ss5.png)
 
